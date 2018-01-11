@@ -41,7 +41,7 @@ class Paginators::NumbersPaginatorTest < ActiveSupport::TestCase
   end
 
   test 'Highest value is 1,000,000' do
-    # TODO
-    #assert_equal 1_000_000, subject(per_page: 1_000_005).last, 'Last number is 1,000,000'
+    assert_equal 1_000_000, subject(per_page: 1_000_005).last, 'Last number is 1,000,000'
+    assert_equal 1_000_000, subject(page: 1_000_000).last, 'Last number is 1,000,000'
   end
 end

@@ -15,16 +15,40 @@ class Paginators::NumbersPaginator
     @page = page.to_i
   end
 
+  def first_page?
+    starting_number == 1
+  end
+
+  def last_page?
+    ending_number == 1_000_000
+  end
+
+  def page
+    @page
+  end
+
+  def next_page
+    @page + 1
+  end
+
+  def previous_page
+    @page - 1
+  end
+
   private
   def store
     (starting_number..ending_number)
   end
 
   def starting_number
-    ((@page - 1) * @per_page) + 1
+    number = ((@page - 1) * @per_page) + 1
+    return number if number < 1_000_000
+    1_000_000 - @per_page
   end
 
   def ending_number
-    (@page * @per_page)
+    number = (@page * @per_page)
+    return number if number <= 1_000_000
+    1_000_000
   end
 end

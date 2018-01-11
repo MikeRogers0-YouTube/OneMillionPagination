@@ -1,24 +1,11 @@
-# README
+# One Million Pagination
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Getting Setup
 
-Things you may want to cover:
+Clone the repo and run:
 
-* Ruby version
+    yarn install && bundle && rails db:setup
 
-* System dependencies
+Once that runs, you can turn on the rails server by running
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    rails s

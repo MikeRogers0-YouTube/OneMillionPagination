@@ -2,12 +2,11 @@
 
 <p>Showing numbers <%= resources.first %> to <%= resources.last %>.</p>
 
-<ul>
+<ul class="list-unstyled">
   <li><%= link_to "Previous", numbers_path(page: resources.previous_page) unless resources.first_page? %></li>
   <li>Current Page: <%= resources.page %></li>
   <li><%= link_to "Next", numbers_path(page: resources.next_page) unless resources.last_page? %></li>
 </ul>
-
 
 <ul>
   <% resources.each do |number| %>

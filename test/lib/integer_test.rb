@@ -2,6 +2,7 @@ require 'test_helper'
 
 class IntegerTest < ActiveSupport::TestCase
   # I've monkey patched the Integer class to add the `to_words` method.
+  # Original word samples were taken from Humanize gem.
   test '.to_words' do
     assert_equal 'one', 1.to_words
     assert_equal 'five', 5.to_words

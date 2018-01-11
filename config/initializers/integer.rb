@@ -40,24 +40,31 @@ class Integer
     
     steps_as_words.each do |num, word|
       # The number is 0 - return blank
-      return '' if self == 0
+      return '' if zero?
 
-      # The number is between 1 & 9
-      return "#{word_phrase}#{word}" if self < 9 && self/num > 0
+      # The self is between 1 & 9 and can be divided into num
+      # So for example, if self is 8 and num is 8, then we can safely return 'eight'.
+      return "#{word_phrase}#{word}" if self < 10 && num == self
 
-      # The number is between 10 & 100
+      # The self is between 10 & 99
       if self < 100 && (self / num) > 0
-        # Number has no smaller version of it (so 20, not 25)
+        
+        # Number has no remainder when divided by num so self is 20, and num is 20.
         return "#{word_phrase}#{word}" if self % num == 0
+
+        # Number has remainder, add this to our string then recursion to find the
+        # smaller number
+        # For example self could be 22, so weird return the value for 20, then lookup the 2
         return "#{word_phrase}#{word}-#{(self % num).to_words}"
       end
 
+      # We're bigger then 99, so we'll need a conjunction.
       if (self / num) > 0
         return "#{word_phrase}#{(self / num).to_words} #{word} #{'and' if self % num != 0} #{(self % num).to_words}".strip
       end
     end
     
-    # Some unknown number, just return itself.
+    # Some unknown number, just return the original integer.
     self
   end
 end

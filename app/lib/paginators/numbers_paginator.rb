@@ -27,6 +27,10 @@ class Paginators::NumbersPaginator
     @page
   end
 
+  def per_page
+    @per_page
+  end
+
   def next_page
     @page + 1
   end

@@ -1,15 +1,36 @@
 <h1>Numbers</h1>
 
-<p>Showing numbers <%= resources.first %> to <%= resources.last %>.</p>
 
-<ul class="list-unstyled">
-  <li><%= link_to "Previous", numbers_path(page: resources.previous_page) unless resources.first_page? %></li>
-  <li>Current Page: <%= resources.page %></li>
-  <li><%= link_to "Next", numbers_path(page: resources.next_page) unless resources.last_page? %></li>
-</ul>
+<div class="row">
+  <div class="col-xs-12 col-md-8">
+    <ul class="pagination">
+      <li><%= link_to 'Previous Page', numbers_path(page: resources.previous_page) unless resources.first_page? %></li>
+      <li><%= link_to "Current Page: #{resources.page}", numbers_path(page: resources.page) %></li>
+      <li><%= link_to 'Next Page', numbers_path(page: resources.next_page) unless resources.last_page? %></li>
+    </ul>
 
-<ul>
-  <% resources.each do |number| %>
-    <li><%= number.humanize %></li>
-  <% end %>
-</ul>
+    <p>Showing numbers <%= resources.first %> to <%= resources.last %>.</p>
+
+    <ul>
+      <% resources.each do |number| %>
+        <li><%= number.humanize %></li>
+      <% end %>
+    </ul>
+
+  </div>
+  <div class="col-xs-12 col-md-4">
+    <%= form_for resources, url: numbers_path, as: :number, method: :get, enforce_utf8: false do |f| %>
+      <div class="form-group">
+        <%= f.label :page %>
+        <%= f.number_field :page, name: :page, min: 1, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :per_page %>
+        <%= f.number_field :per_page, name: :per_page, min: 1, class: 'form-control' %>
+      </div>
+
+      <%= f.submit 'Update', class: 'btn btn-default', name: '' %>
+    <% end %>
+  </div>
+</div>

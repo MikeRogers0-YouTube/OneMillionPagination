@@ -4,7 +4,6 @@ class Integer
       1_000_000 => 'million',
       1_000 => 'thousand',
       100 => 'hundred',
-      100 => 'hundred',
       90 => 'ninety',
       80 => 'eighty',
       70 => 'seventy',
@@ -35,10 +34,16 @@ class Integer
       0 => 'zero'
     }
 
-    final_phrase = ''
+    word_phrase = ''
 
-    # Loop through the `steps_as_words`, then use recursion to find work your way
-    # though the word.
-    self
+    # Loop through the `steps_as_words`, then use recursion to find words for each
+    # block of values.
+    
+    steps_as_words.each do |num, word|
+      return word_phrase if self == 0
+      return "#{word_phrase} #{word}" if self < 9 && self/num > 0
+    end
+    
+    self.strip
   end
 end

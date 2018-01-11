@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CoreExt::IntegerTest < ActiveSupport::TestCase
+class IntegerTest < ActiveSupport::TestCase
   # I've monkey patched the Integer class to add the `to_words` method.
   test '.to_words' do
     assert_equal 'one', 1.to_words

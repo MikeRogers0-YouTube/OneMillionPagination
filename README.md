@@ -12,7 +12,7 @@ Once that runs, you can turn on the rails server by running
 
 ## Key Files
 
-### Integer.to_words method
+### Integer.to_words method
 
 [config/initializers/integer.rb](https://github.com/MikeRogers0/OneMillionPagination/tree/master/config/initializers/integer.rb)
 [test/lib/integer_test.rb](https://github.com/MikeRogers0/OneMillionPagination/tree/master/test/lib/integer_test.rb)
